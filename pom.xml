@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.chetan.springboot</groupId>
-	<artifactId>springbootstarter</artifactId>
+	<artifactId>spring-boot-security</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springbootstarter</name>
-	<description>Demo project for Spring Boot</description>
+	<name>spring-boot-security</name>
+	<description>Demo project for Spring Boot Security</description>
 
 	<properties>
 		<java.version>1.8</java.version>
