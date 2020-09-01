@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +24,14 @@ public class DemoController {
 	
 	Logger logger = LoggerFactory.getLogger(DemoController.class);
 	
-	@GetMapping("/topic")
+	@GetMapping("/")
+	@ApiOperation(httpMethod = "GET",value = "To get Chetan Message",  notes = "API to load the Message for chetan", position=2)
+	public String getMessage(){
+		logger.info("Spring Boot App working fine..");
+		return "Hey Chetan, Hows you doing ? This is your first springboot application";
+	}
+	
+	@GetMapping(value="/topic", produces=MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(httpMethod = "GET",value = "Topic Load",  notes = "API to load the Topic page",  response = Topic.class,position=1)
 	public List<Topic> getMsg(){
 		logger.info("topic API called : /topic");
@@ -31,13 +39,6 @@ public class DemoController {
 				new Topic("core java","core java j2se","core java discription"),
 				new Topic("hibernate","Hibernate ORM Framework","Hibernate ORM framework discription"),
 				new Topic("restful","Restful web service","Restful web service discription"));
-	}
-	
-	@GetMapping("/")
-	@ApiOperation(httpMethod = "GET",value = "To get Chetan Message",  notes = "API to load the Message for chetan", position=2)
-	public String getMessage(){
-		logger.info("Spring Boot App working fine..");
-		return "Hey Chetan, Hows you doing ? This is your first springboot application";
 	}
 	
 	@GetMapping("/admin")

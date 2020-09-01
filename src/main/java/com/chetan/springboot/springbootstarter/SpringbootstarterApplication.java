@@ -6,6 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+import com.chetan.springboot.springstarter.repository.UserRepository;
 
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -16,6 +19,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @ComponentScan("com.chetan.springboot.springstarter")
 @SpringBootApplication
 @EnableSwagger2
+@EnableJpaRepositories(basePackageClasses=UserRepository.class)
 public class SpringbootstarterApplication {
 
 	private static Logger logger = LoggerFactory.getLogger(SpringbootstarterApplication.class);
