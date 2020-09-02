@@ -21,11 +21,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	UserDetailsService userDetailsService;
-	
+	/*//MySQL auth
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		//for custom tables
 		auth.userDetailsService(userDetailsService);
-	}
+	}*/
+	
+	/*//LDAP login
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		
+		auth.ldapAuthentication()
+		.userDnPatterns("uid={0},ou=people").groupSearchBase("ou=groups");
+
+	}*/
 	
 	/*
 	@Override
@@ -56,13 +64,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		//For default select
 		//auth.jdbcAuthentication().dataSource(dataSource);
 	}*/
-	/*
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		//for custom tables
 		auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username = ?")
 		.authoritiesByUsernameQuery("SELECT username, authority FROM authorities WHERE username = ?");
-	}*/
+	}
 	
 	@Bean
     public PasswordEncoder getPasswordEncoder() {
@@ -77,7 +85,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.antMatchers("/").permitAll()
 		.and().formLogin();
 	}
-	
+	/*
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests().anyRequest().fullyAuthenticated().and().formLogin();
+	}
+	*/
 	
 	
 

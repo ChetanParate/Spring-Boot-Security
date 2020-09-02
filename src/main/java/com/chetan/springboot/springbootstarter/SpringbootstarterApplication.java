@@ -19,7 +19,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @ComponentScan("com.chetan.springboot.springstarter")
 @SpringBootApplication
 @EnableSwagger2
-@EnableJpaRepositories(basePackageClasses=UserRepository.class)
+@EnableJpaRepositories(basePackageClasses=UserRepository.class )
 public class SpringbootstarterApplication {
 
 	private static Logger logger = LoggerFactory.getLogger(SpringbootstarterApplication.class);
